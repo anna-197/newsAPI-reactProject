@@ -1,25 +1,50 @@
 import './App.css'
-import React from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 
 
 
 function App() {
 
+  const[ news, setNews ] = useState([]);
+
 const getNews = () => {
 
-  Axios.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=f7f792eeba474a14bcfac3bf0e293cec")
+  Axios.get("https://newsapi.org/v2/top-headlines?country=in&apiKey=f7f792eeba474a14bcfac3bf0e293cec")
   .then((response)=>{
     console.log(response);
+    setNews(response.data.articles);
   })
 
 }
 
   return (
+    <>
+
     <div className='container'>
       <h1 className="title"> TopNews </h1>
       <button className='button' onClick = {getNews}> Get News </button>
     </div>
+
+    <div className='news-container'>
+      {
+        news.map((index)=>{
+          return(
+           <>
+           <img src={index.urlToImage} alt='default' />
+
+          <h5>{index.title}</h5>
+           </>
+          )
+        })
+      }
+    </div>
+
+
+
+    </>
+    
+
   );
 }
 
