@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link: https://news-api-axios-project.netlify.app/
 
 ## Available Scripts
 
